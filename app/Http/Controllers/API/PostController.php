@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-
+use File;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -29,7 +29,7 @@ class PostController extends Controller
         $response = array();
         $response['message'] = null;
         $response['data'] = null;
-        if ($response['data']= Post::where('status',1)->get()) {
+        if ($response['data']= Post::select('id','title','description','created_at as createdAt')->where('status',1)->get()) {
             return response()->json($response,$this->successStatus);
         }
         $response['message'] = "No content";
@@ -54,6 +54,11 @@ class PostController extends Controller
         $post = new Post();
         if ($this->save($post,$request)) {
             $response['message'] = "Post Created Successfully";
+            $response['data'] =  [  
+                                    'id' => $post->id,'title' => $post->title,'description' => $post->description,
+                                    'thumbnail' => asset('storage/'.$post->thumbnail),'status' => $post->status,
+                                    'user' => $post->userInfo->name??'', 'createdAt' => Carbon::parse($post->created_at)->format('d/m/Y h:i:s a')
+                                ];
             return response()->json($response,$this->createdStatus);
         }
         $response['message'] = "Post could not create, try again";
@@ -65,7 +70,12 @@ class PostController extends Controller
         $response = array();
         $response['message'] = null;
         $response['data'] = null;
-        if ($response['data'] = Post::findOrFail($id)) {
+        if ($post = Post::find($id)) {
+            $response['data'] = [
+                'id' => $post->id,'title' => $post->title,'description' => $post->description,
+                'thumbnail' => asset('storage/'.$post->thumbnail),'status' => $post->status,
+                'user' => $post->userInfo->name??'', 'createdAt' => Carbon::parse($post->created_at)->format('d/m/Y h:i:s a')
+             ];
             return response()->json($response,$this->successStatus);
         }
         $response['message'] = "No post found";
@@ -78,9 +88,14 @@ class PostController extends Controller
         $response = array();
         $response['message'] = null;
         $response['data'] = null;
-        $post = Post::findOrFail ($id);
-        if ($this->save($post,$request)) {
+        $post = Post::find ($id);
+        if ($post && $this->save($post,$request)) {
             $response['message'] = "Post updated Successfully";
+            $response['data'] = [
+                                    'id' => $post->id,'title' => $post->title,'description' => $post->description,
+                                    'thumbnail' => asset('storage/'.$post->thumbnail),'status' => $post->status,
+                                    'user' => $post->userInfo->name??'', 'createdAt' => Carbon::parse($post->created_at)->format('d/m/Y h:i:s a')
+                                 ];
             return response()->json($response,$this->successStatus);
         }
         $response['message'] = "Post could not be updated.";
@@ -92,7 +107,12 @@ class PostController extends Controller
         $response = array();
         $response['message'] = null;
         $response['data'] = null;
-        if (Post::findOrFail($id)->delete()) {
+        $post = Post::find($id);
+        $exFile = $post->thumbnail??null;
+        if ($post && $post->delete()) {
+            if(File::exists(public_path('storage/'.$exFile))){
+                File::delete(public_path('storage/'.$exFile));
+            }
             $response['message'] = "successfully deleted";
             return response()->json($response,$this->successStatus);
         }
@@ -113,16 +133,16 @@ class PostController extends Controller
             ]);
         } else {
             $request->validate([
-                'thumbnail' => 'nullable|image|max:10000',
+                'thumbnail' => 'required|image|max:10000',
             ]);
         }
 
         $post->title = trim($request->title);
         $post->description = trim($request->description);
         $post->status = $request->status;
+        $exFile = null;
         if ($request->hasFile('thumbnail')) {
             $file = $request->file('thumbnail')->store('thumbnail','public');
-            $exFile = null;
             if ($post->thumbnail) {
                 $exFile = $post->thumbnail;
             }
@@ -132,8 +152,8 @@ class PostController extends Controller
         $post->user_id = $post->user_id??Auth::id();
 
         if ($post->save()) {
-            if ($exFile) {
-                Storage::delete($exFile);
+            if(File::exists(public_path('storage/'.$exFile))){
+                File::delete(public_path('storage/'.$exFile));
             }
             return true;
         }

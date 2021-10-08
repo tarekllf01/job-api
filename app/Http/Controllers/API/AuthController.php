@@ -32,7 +32,7 @@ class AuthController extends Controller
             $response['message'] = "The credentials do not match with our records";
             return response()->json($response,$this->notFoundStatus);
         }
-        $response['data']['user'] = ['name'=>$user->name,'email'=>$user->email,'role' => 'user'];
+        $response['data']['user'] = ['name'=>$user->name,'email'=>$user->email,'role' => $user->role];
         $response['data']['token'] = $user->createToken('job-app')->plainTextToken;
         return response()->json($response,$this->createdStatus);
     }
@@ -42,8 +42,7 @@ class AuthController extends Controller
         $request->user()->currentAccessToken()->delete();
         $response['message'] = 'Successfully logged out';
         $response['data'] = null;
-        return response()->json($response,$this->successStatus);
-        
+        return response()->json($response,$this->successStatus);   
     }
     
     public function register (Request $request)

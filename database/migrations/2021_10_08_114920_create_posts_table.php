@@ -3,6 +3,7 @@
 use App\Models\Post;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 
 class CreatePostsTable extends Migration
@@ -24,6 +25,9 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+        
+        // for using storage for thumbnail
+        Artisan::call('storage:link');
     }
 
     /**

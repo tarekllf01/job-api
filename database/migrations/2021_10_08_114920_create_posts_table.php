@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->longText('description');
             $table->bigInteger('user_id');
-            $table->string('thimbnail');
+            $table->string('thumbnail');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
             $table->softDeletes();

@@ -9,15 +9,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use HasFactory,SoftDeletes;
-
     protected $table = "posts";
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'title',
+        'description',
+        'user_id',
+        'updated_by_user_id',
+        'thumbnail',
+        'status',
     ];
-
 
     public function userInfo ()
     {

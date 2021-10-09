@@ -39,14 +39,13 @@ Step 4: Run the bellow command
 
     php artisan migrate
     
-    Now all the database table should be created
-    
     bellow users are also created.
     
         1.  ['name' => 'TAREK HOSSEN','email' => 'tarekllf01@gmail.com','role'=> 'admin','password'=>'password']
         2.  ['name' => 'TEST USER','email' => 'user@gmail.com','role'=> 'user','password'=>'password']
 
 Step 5: Run the bellow command
+
     php artisan serve
 
 Finally project has been installed in your system.

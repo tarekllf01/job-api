@@ -3,7 +3,7 @@
 
 These APIs are simple rest api for job apllication.
 
-The api are listed bellow 
+The APIs are listed bellow 
 
 - [Register User](https://documenter.getpostman.com/view/6567060/UUy7c53V#3256e8bd-e4af-4ae2-adc5-94027f6360bc).
 - [Login user](https://documenter.getpostman.com/view/6567060/UUy7c53V#c60dab53-a6e1-4bf3-8423-d9c7896896f1).
@@ -15,7 +15,7 @@ The api are listed bellow
 - [Delete Post](https://documenter.getpostman.com/view/6567060/UUy7c53V#c2a3fe6a-f7b0-45c2-82ac-120eea38bff7).
 - [Create Admin user](https://documenter.getpostman.com/view/6567060/UUy7c53V#e28d7571-9b8e-484f-9734-8e9ddfcd1afb).
 
-Checkout the API documentation page [Here] (https://documenter.getpostman.com/view/6567060/UUy7c53V)
+Checkout the API documentation page [Here](https://documenter.getpostman.com/view/6567060/UUy7c53V)
 
 
 ## Installation Guide
@@ -29,15 +29,20 @@ Step 2: Go to project directiry open command / terminal and run the bellow comma
 
     composer install    
 
-Step 3: Run the bellow command 
+Step 3: Run the bellow command
+ 
     mv .env.example .env
 
     Open .env file and give database name, username & password.
 
 Step 4: Run the bellow command 
+
     php artisan migrate
+    
     Now all the database table should be created
+    
     bellow users are also created.
+    
         1.  ['name' => 'TAREK HOSSEN','email' => 'tarekllf01@gmail.com','role'=> 'admin','password'=>'password']
         2.  ['name' => 'TEST USER','email' => 'user@gmail.com','role'=> 'user','password'=>'password']
 

@@ -1,64 +1,51 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About API
 
-## About Laravel
+These APIs are simple rest api for job apllication.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The api are listed bellow 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Register User](https://documenter.getpostman.com/view/6567060/UUy7c53V#3256e8bd-e4af-4ae2-adc5-94027f6360bc).
+- [Login user](https://documenter.getpostman.com/view/6567060/UUy7c53V#c60dab53-a6e1-4bf3-8423-d9c7896896f1).
+- [Logout](https://documenter.getpostman.com/view/6567060/UUy7c53V#ae0dd58a-7229-4338-9818-7d7bbffbe435).
+- [View posts ](https://documenter.getpostman.com/view/6567060/UUy7c53V#24d8337c-0e3b-40f3-9a06-b8639e269c62).
+- [View post details](https://documenter.getpostman.com/view/6567060/UUy7c53V#ac544056-2733-4d7f-9c8b-965f94572459).
+- [Create Post](https://documenter.getpostman.com/view/6567060/UUy7c53V#54fc92d8-87f4-4c9c-8b95-71d5387aaf4d).
+- [Update Post](https://documenter.getpostman.com/view/6567060/UUy7c53V#9c0acb57-0edf-4088-9603-5f3b0cafb6ad).
+- [Delete Post](https://documenter.getpostman.com/view/6567060/UUy7c53V#c2a3fe6a-f7b0-45c2-82ac-120eea38bff7).
+- [Create Admin user](https://documenter.getpostman.com/view/6567060/UUy7c53V#e28d7571-9b8e-484f-9734-8e9ddfcd1afb).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Checkout the API documentation page [Here] (https://documenter.getpostman.com/view/6567060/UUy7c53V)
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Installation Guide
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Step 1: run the bellow command in your desired location where you want to setup the project
+    git clone https://github.com/tarekllf01/job-api.git
 
-## Laravel Sponsors
+Or your can simply download the poject.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Step 2: Go to project directiry open command / terminal and run the bellow command
 
-### Premium Partners
+    composer install    
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+Step 3: Run the bellow command 
+    mv .env.example .env
 
-## Contributing
+    Open .env file and give database name, username & password.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Step 4: Run the bellow command 
+    php artisan migrate
+    Now all the database table should be created
+    bellow users are also created.
+        1.  ['name' => 'TAREK HOSSEN','email' => 'tarekllf01@gmail.com','role'=> 'admin','password'=>'password']
+        2.  ['name' => 'TEST USER','email' => 'user@gmail.com','role'=> 'user','password'=>'password']
 
-## Code of Conduct
+Step 5: Run the bellow command
+    php artisan serve
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Finally project has been installed in your system.
+To consume the APIs pleae follow the [API documentation](https://documenter.getpostman.com/view/6567060/UUy7c53V)
 
 ## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Open source. can be used without copy right for development & training purpose

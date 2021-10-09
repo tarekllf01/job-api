@@ -20,32 +20,33 @@ Checkout the API documentation page [Here](https://documenter.getpostman.com/vie
 
 ## Installation Guide
 
-Step 1: run the bellow command in your desired location where you want to setup the project
+**Step 1: run the bellow command in your desired location where you want to setup the project**
     
     git clone https://github.com/tarekllf01/job-api.git
 
 Or your can simply download the poject.
 
-**Step 2: Go to project directiry open command / terminal and run the bellow command
+**Step 2: Go to project directiry open command / terminal and run the bellow command**
 
     composer install    
 
-**Step 3: Run the bellow command
+**Step 3: Run the bellow command**
  
     mv .env.example .env
 
-Open .env file and give database name, username & password.
+> Open .env file and give database name, username & password.
 
-**Step 4: Run the bellow command 
+**Step 4: Run the bellow command**
 
     php artisan migrate
-    
+
+All necessary tables are created.
 Bellow users are also created.
 
     1.  ['name' => 'TAREK HOSSEN','email' => 'tarekllf01@gmail.com','role'=> 'admin','password'=>'password']
     2.  ['name' => 'TEST USER','email' => 'user@gmail.com','role'=> 'user','password'=>'password']
 
-**Step 5: Run the bellow command
+**Step 5: Run the bellow command**
 
     php artisan serve
 

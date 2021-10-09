@@ -33,16 +33,16 @@ Step 3: Run the bellow command
  
     mv .env.example .env
 
-    Open .env file and give database name, username & password.
+Open .env file and give database name, username & password.
 
 Step 4: Run the bellow command 
 
     php artisan migrate
     
-    bellow users are also created.
-    
-        1.  ['name' => 'TAREK HOSSEN','email' => 'tarekllf01@gmail.com','role'=> 'admin','password'=>'password']
-        2.  ['name' => 'TEST USER','email' => 'user@gmail.com','role'=> 'user','password'=>'password']
+Bellow users are also created.
+
+    1.  ['name' => 'TAREK HOSSEN','email' => 'tarekllf01@gmail.com','role'=> 'admin','password'=>'password']
+    2.  ['name' => 'TEST USER','email' => 'user@gmail.com','role'=> 'user','password'=>'password']
 
 Step 5: Run the bellow command
 
